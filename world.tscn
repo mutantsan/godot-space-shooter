@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://8vkxbp5ljrpj"]
+[gd_scene load_steps=4 format=3 uid="uid://8vkxbp5ljrpj"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_4wf68"]
 [ext_resource type="PackedScene" uid="uid://dane86067o0pt" path="res://ship.tscn" id="1_h2k5e"]
+[ext_resource type="PackedScene" uid="uid://cblbmbs8lyobn" path="res://enemy_spawner.tscn" id="3_ov8gt"]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" groups=["World"]]
+script = ExtResource("1_4wf68")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -15,3 +18,15 @@ metadata/_edit_lock_ = true
 
 [node name="Ship" parent="." instance=ExtResource("1_h2k5e")]
 position = Vector2(23, 90)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_ov8gt")]
+position = Vector2(320, 0)
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "Score = 0"
+horizontal_alignment = 1
