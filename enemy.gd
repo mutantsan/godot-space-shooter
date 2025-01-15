@@ -5,13 +5,6 @@ const ExplosionEffect = preload("res://explosion.tscn")
 @export var SPEED: = 20;
 @export var ARMOR: = 3;
 
-signal score_update
-
-func _ready() -> void:
-	var main = get_tree().current_scene
-	if main.is_in_group("World"):
-		connect("score_update", Callable(main, "_on_enemy_score_update"))
-
 func _process(delta: float) -> void:
 	position.x -= SPEED * delta;
 
@@ -21,7 +14,9 @@ func _on_body_entered(body: Node2D) -> void:
 	ARMOR -= 1
 	
 	if ARMOR == 0:
-		emit_signal("score_update")
+		var main = get_tree().current_scene
+		if main.is_in_group("World"):
+			main.score += 10;
 		queue_free()
 
 

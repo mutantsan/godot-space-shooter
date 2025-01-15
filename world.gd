@@ -1,8 +1,9 @@
 extends Node
 
-var score = 0;
+var score = 0: set = set_score
 @onready var ScoreLabel = $Score
 
-func _on_enemy_score_update() -> void:
-	score += 10;
-	ScoreLabel.text = "Score : %s" % score
+func set_score(value: int) -> void:
+	score = value
+	ScoreLabel.text = "Score %s" % score
+	
