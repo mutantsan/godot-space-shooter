@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://8vkxbp5ljrpj"]
+
+[ext_resource type="PackedScene" uid="uid://dane86067o0pt" path="res://ship.tscn" id="1_h2k5e"]
+
+[node name="World" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Ship" parent="." instance=ExtResource("1_h2k5e")]
+position = Vector2(23, 90)
