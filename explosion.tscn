@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbky8bqocwit6"]
+[gd_scene load_steps=6 format=3 uid="uid://bbky8bqocwit6"]
 
-[ext_resource type="Texture2D" uid="uid://b1j6tskfmccxb" path="res://resources/explosion.png" id="1_2u57x"]
+[ext_resource type="Texture2D" uid="uid://b1j6tskfmccxb" path="res://resources/images/explosion.png" id="1_2u57x"]
+[ext_resource type="AudioStream" uid="uid://b6xu3xo5oka0u" path="res://resources/sounds/explosion_sound.wav" id="2_6fad0"]
 
 [sub_resource type="Animation" id="Animation_b0ium"]
 resource_name = "Explode"
@@ -55,7 +56,6 @@ _data = {
 }
 
 [node name="Explosion" type="Sprite2D"]
-modulate = Color(0.768627, 0.854902, 0, 1)
 texture = ExtResource("1_2u57x")
 hframes = 6
 frame = 1
@@ -65,3 +65,8 @@ libraries = {
 "": SubResource("AnimationLibrary_6ef08")
 }
 autoplay = "Explode"
+
+[node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6fad0")
+volume_db = -9.789
+autoplay = true

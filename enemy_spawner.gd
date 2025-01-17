@@ -17,7 +17,7 @@ func spawn_enemy() -> void:
 	var enemy: = Enemy.instantiate()
 	var spawn_position: = get_spawn_position()
 	
-	get_tree().current_scene.add_child(enemy)
+	get_tree().current_scene.add_child(enemy, true)
 	
 	enemy.global_position = spawn_position
 	

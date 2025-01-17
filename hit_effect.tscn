@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://j6jpfxjljxjd"]
+
+[ext_resource type="AudioStream" uid="uid://bx7d4vccfnv02" path="res://resources/sounds/hit_sound.wav" id="1_1onx1"]
+[ext_resource type="Script" path="res://hit_effect.gd" id="1_yrd7n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hfxwt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+
+[sub_resource type="Animation" id="Animation_qg6nf"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_38e11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ni0tf"]
+_data = {
+"Hit": SubResource("Animation_qg6nf"),
+"RESET": SubResource("Animation_38e11")
+}
+
+[node name="HitEffect" type="Node2D"]
+script = ExtResource("1_yrd7n")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_1onx1")
+volume_db = -10.0
+autoplay = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_hfxwt")
+lifetime = 0.4
+one_shot = true
+speed_scale = 1.3
+explosiveness = 1.0
+randomness = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ni0tf")
+}
+autoplay = "Hit"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
