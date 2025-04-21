@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3hi8f2txsjde"]
+
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_u1jup"]
+[ext_resource type="PackedScene" uid="uid://bsln6qsa2ug7b" path="res://star_particles.tscn" id="2_18a2t"]
+[ext_resource type="FontVariation" uid="uid://c0r3otidny40k" path="res://PixelFont.tres" id="3_n75jb"]
+
+[node name="GameOverScreen" type="Node"]
+script = ExtResource("1_u1jup")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="StarParticles" parent="." instance=ExtResource("2_18a2t")]
+
+[node name="HighscoreLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n75jb")
+theme_override_font_sizes/font_size = 12
+text = "Highscore: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -33.5
+offset_right = 59.0
+offset_bottom = -10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n75jb")
+theme_override_font_sizes/font_size = 18
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EscLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 70.0
+offset_right = 59.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n75jb")
+theme_override_font_sizes/font_size = 6
+text = "Press Esc to return to the main menu"
+horizontal_alignment = 1
+vertical_alignment = 1

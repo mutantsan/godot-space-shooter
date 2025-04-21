@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c0r3otidny40k"]
+
+[ext_resource type="FontFile" uid="uid://dhkyosyjovhfr" path="res://resources/fonts/pixel_rpg.ttf" id="1_ktb7n"]
+
+[resource]
+base_font = ExtResource("1_ktb7n")

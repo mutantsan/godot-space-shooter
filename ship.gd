@@ -5,6 +5,8 @@ extends Area2D
 const Laser: PackedScene = preload("res://laser.tscn")
 const ExplosionEffect = preload("res://explosion.tscn")
 
+signal player_death
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
 		if position.y <= 10:
@@ -40,3 +42,5 @@ func _exit_tree() -> void:
 	main.add_child.call_deferred(explosion_effect)
 	
 	explosion_effect.global_position = global_position
+	
+	emit_signal("player_death")
